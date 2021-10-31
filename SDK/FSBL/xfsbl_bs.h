@@ -64,7 +64,7 @@ extern "C" {
 #include "xcsudma.h"
 /************************** Constant Definitions *****************************/
 
-#define PL_DONE_POLL_COUNT  (u32)(10000U)
+#define PL_DONE_POLL_COUNT  (u32)(100000000U)
 #define PL_RESET_PERIOD_IN_US  1U
 #define XFSBL_PL_PWRUP_WAIT_MICROSEC    0U
 

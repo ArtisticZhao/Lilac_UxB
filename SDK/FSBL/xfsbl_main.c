@@ -140,7 +140,7 @@ int main(void )
 #endif
 
 				XFsbl_Printf(DEBUG_INFO,
-						"================= In Stage 2 ============ \n\r");
+						"================= In Stage 2.1 ============ \n\r");
 
 				/**
 				 * 	Primary Device
