@@ -1,0 +1,12 @@
+/include/ "system-conf.dtsi"
+/ {
+};
+
+&gem0 {
+    phy-handle = <&phy9>;
+    phy9: phy@9 {
+        reg = <0x9>;
+        xlnx,phy-type = <0x4>;
+		reset-gpios = <&gpio 78 0>;
+    };
+};
