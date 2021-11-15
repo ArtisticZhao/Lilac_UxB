@@ -116,18 +116,18 @@ CONFIG_system-zynqmp=y
 #
 # e2fsprogs 
 #
-# CONFIG_e2fsprogs is not set
+CONFIG_e2fsprogs=y
 # CONFIG_e2fsprogs-dev is not set
-# CONFIG_e2fsprogs-mke2fs is not set
+CONFIG_e2fsprogs-mke2fs=y
 # CONFIG_e2fsprogs-dbg is not set
 # CONFIG_e2fsprogs-resize2fs is not set
-# CONFIG_e2fsprogs-tune2fs is not set
+CONFIG_e2fsprogs-tune2fs=y
 # CONFIG_libss is not set
 # CONFIG_libcomerr is not set
 # CONFIG_libext2fs is not set
 # CONFIG_libe2p is not set
-# CONFIG_e2fsprogs-e2fsck is not set
-# CONFIG_e2fsprogs-badblocks is not set
+CONFIG_e2fsprogs-e2fsck=y
+CONFIG_e2fsprogs-badblocks=y
 
 #
 # ed 

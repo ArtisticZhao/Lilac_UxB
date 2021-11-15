@@ -1,5 +1,9 @@
 /include/ "system-conf.dtsi"
 / {
+   chosen {
+      bootargs = "earlycon console=ttyPS0,115200 clk_ignore_unused cpuidle.off=1 root=/dev/mmcblk0p1 rootfstype=ext4 rw rootwait ";
+      stdout-path = "serial0:115200n8";
+   };
 };
 
 &gem0 {
