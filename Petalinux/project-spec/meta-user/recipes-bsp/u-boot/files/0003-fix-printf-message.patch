@@ -1,0 +1,25 @@
+From 580147adb3f19b7c8526463e9c5079ca227b14a2 Mon Sep 17 00:00:00 2001
+From: ArtisticZhao <hit.yuhao.zhao@gmail.com>
+Date: Sat, 27 Nov 2021 16:17:48 +0800
+Subject: [PATCH 3/3] fix printf message.
+
+---
+ drivers/spi/spi-uclass.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/spi/spi-uclass.c b/drivers/spi/spi-uclass.c
+index f147356..35c341d 100644
+--- a/drivers/spi/spi-uclass.c
++++ b/drivers/spi/spi-uclass.c
+@@ -23,7 +23,7 @@ static int spi_set_speed_mode(struct udevice *bus, int speed, int mode)
+ 	int ret;
+ 	speed = 12500000;
+ 	mode = 3;
+-	printf("WARRNING, force set spi speed=%d, mode=%d", speed, mode);
++	printf("WARRNING, force set spi speed=%d, mode=%d\n", speed, mode);
+ 	ops = spi_get_ops(bus);
+ 	if (ops->set_speed)
+ 		ret = ops->set_speed(bus, speed);
+-- 
+2.25.1
+

@@ -1,0 +1,57 @@
+From c55890b474af708033bedb56eb741ea205befc92 Mon Sep 17 00:00:00 2001
+From: ArtisticZhao <hit.yuhao.zhao@gmail.com>
+Date: Sat, 27 Nov 2021 14:44:33 +0800
+Subject: [PATCH 2/3] =?UTF-8?q?=E4=B8=B4=E6=97=B6=E5=8F=AF=E4=BB=A5?=
+ =?UTF-8?q?=E5=AE=9E=E7=8E=B0=E5=AF=B9513=E7=9A=84qspi=20flash=E7=9A=84?=
+ =?UTF-8?q?=E8=AF=BB=E5=8F=96=EF=BC=8C=E5=86=99=E7=9A=84=E4=B8=8D=E5=A4=9F?=
+ =?UTF-8?q?=E4=BC=98=E9=9B=85=EF=BC=8C=E5=8F=AF=E4=BB=A5=E4=B9=8B=E5=90=8E?=
+ =?UTF-8?q?=E7=A0=94=E7=A9=B6=E6=80=8E=E4=B9=88=E5=88=A9=E7=94=A8=E8=AE=BE?=
+ =?UTF-8?q?=E5=A4=87=E6=A0=91=E8=BF=9B=E8=A1=8C=E5=AE=8C=E5=96=84=E3=80=82?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ drivers/mtd/spi/sf_internal.h | 2 +-
+ drivers/spi/spi-uclass.c      | 5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mtd/spi/sf_internal.h b/drivers/mtd/spi/sf_internal.h
+index b684cad..de2a257 100644
+--- a/drivers/mtd/spi/sf_internal.h
++++ b/drivers/mtd/spi/sf_internal.h
+@@ -57,7 +57,7 @@ enum spi_nor_option_flags {
+ #define CMD_EXIT_4B_ADDR		0xE9
+ 
+ /* Read commands */
+-#define CMD_READ_ARRAY_SLOW		0x03
++#define CMD_READ_ARRAY_SLOW		0x13   // modify for 513 slow read.
+ #define CMD_READ_ARRAY_FAST		0x0b
+ #define CMD_READ_DUAL_OUTPUT_FAST	0x3b
+ #define CMD_READ_DUAL_IO_FAST		0xbb
+diff --git a/drivers/spi/spi-uclass.c b/drivers/spi/spi-uclass.c
+index 4fd7be5..f147356 100644
+--- a/drivers/spi/spi-uclass.c
++++ b/drivers/spi/spi-uclass.c
+@@ -21,7 +21,9 @@ static int spi_set_speed_mode(struct udevice *bus, int speed, int mode)
+ {
+ 	struct dm_spi_ops *ops;
+ 	int ret;
+-
++	speed = 12500000;
++	mode = 3;
++	printf("WARRNING, force set spi speed=%d, mode=%d", speed, mode);
+ 	ops = spi_get_ops(bus);
+ 	if (ops->set_speed)
+ 		ret = ops->set_speed(bus, speed);
+@@ -40,6 +42,7 @@ static int spi_set_speed_mode(struct udevice *bus, int speed, int mode)
+ 		printf("Cannot set mode (err=%d)\n", ret);
+ 		return ret;
+ 	}
++	printf("spi set speed=%d mode=%d\n", speed, mode);
+ 
+ 	return 0;
+ }
+-- 
+2.25.1
+
