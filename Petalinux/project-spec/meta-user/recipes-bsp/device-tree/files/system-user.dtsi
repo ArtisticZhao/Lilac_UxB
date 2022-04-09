@@ -14,3 +14,21 @@
 		reset-gpios = <&gpio 78 0>;
     };
 };
+
+&gem1 {
+    phy-handle = <&phy8>;
+    phy8: phy@8 {
+        reg = <0x8>;
+        xlnx,phy-type = <0x4>;
+		reset-gpios = <&gpio 79 0>;
+    };
+};
+
+&gem2 {
+    phy-handle = <&phy7>;
+    phy7: phy@7 {
+        reg = <0x7>;
+        xlnx,phy-type = <0x4>;
+		reset-gpios = <&gpio 80 0>;
+    };
+};

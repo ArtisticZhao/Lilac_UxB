@@ -1,28 +1,62 @@
 {
    "ExpandedHierarchyInLayout":"",
+   "comment_3":"phyaddr=8
+reset=emio-gpio1",
+   "comment_4":"phyaddr=7
+reset=emio-gpio2",
+   "comment_5":"phyaddr=9
+reset=emio-gpio0",
+   "commentid":"comment_3|comment_4|comment_5|",
+   "fillcolor_comment_3":"",
+   "fillcolor_comment_4":"",
+   "fillcolor_comment_5":"",
+   "font_comment_3":"14",
+   "font_comment_4":"14",
+   "font_comment_5":"14",
    "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port sfp0 -pg 1 -lvl 3 -x 1620 -y 110 -defaultsOSRD
-preplace port gt_refclk -pg 1 -lvl 0 -x -30 -y 260 -defaultsOSRD
-preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 390 -y 140 -defaultsOSRD
-preplace inst gig_ethernet_pcs_pma_0 -pg 1 -lvl 2 -x 1110 -y 240 -defaultsOSRD
-preplace inst config_const -pg 1 -lvl 1 -x 390 -y 520 -defaultsOSRD
-preplace inst rst_slice -pg 1 -lvl 1 -x 390 -y 640 -defaultsOSRD
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 1 1 N 220
-preplace netloc config_const_dout 1 1 1 790 240n
-preplace netloc config_const_dout1 1 1 1 800 260n
-preplace netloc config_const_dout2 1 1 1 810 280n
-preplace netloc config_const_dout3 1 1 1 830 320n
-preplace netloc rst_slice_Dout 1 1 1 820 300n
-preplace netloc zynq_ultra_ps_e_0_emio_gpio_o 1 0 2 0 0 780
-preplace netloc zynq_ultra_ps_e_0_GMII_ENET0 1 1 1 800 60n
-preplace netloc diff_clock_rtl_0_1 1 0 2 -10J 280 780J
-preplace netloc zynq_ultra_ps_e_0_MDIO_ENET0 1 1 1 790 80n
-preplace netloc gig_ethernet_pcs_pma_0_sgmii 1 2 1 N 110
-levelinfo -pg 1 -30 390 1110 1620
-pagesize -pg 1 -db -bbox -sgen -140 -190 1700 1280
-"
+preplace port gt_refclk -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace port sfp0 -pg 1 -lvl 3 -x 1300 -y 220 -defaultsOSRD
+preplace port sfp1 -pg 1 -lvl 3 -x 1300 -y 180 -defaultsOSRD
+preplace port sfp2 -pg 1 -lvl 3 -x 1300 -y 200 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 410 -y 220 -defaultsOSRD
+preplace inst sgmii -pg 1 -lvl 2 -x 1140 -y 200 -defaultsOSRD
+preplace netloc zynq_ultra_ps_e_0_emio_gpio_o 1 1 1 800 200n
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 1 1 830 280n
+preplace netloc zynq_ultra_ps_e_0_MDIO_ENET0 1 1 1 810 80n
+preplace netloc zynq_ultra_ps_e_0_GMII_ENET0 1 1 1 820 60n
+preplace netloc gig_ethernet_pcs_pma_0_sgmii 1 2 1 NJ 220
+preplace netloc diff_clock_rtl_0_1 1 0 2 NJ 440 810J
+preplace netloc zynq_ultra_ps_e_0_GMII_ENET1 1 1 1 830 100n
+preplace netloc zynq_ultra_ps_e_0_MDIO_ENET1 1 1 1 N 120
+preplace netloc sfp1_sfp 1 2 1 NJ 180
+preplace netloc mdio_pcs_pma_1 1 1 1 N 160
+preplace netloc gmii_gem_pcs_pma_1 1 1 1 800 140n
+preplace netloc sfp2_sfp 1 2 1 NJ 200
+preplace cgraphic comment_3 place right 357 23 textcolor 4 linecolor 3
+preplace cgraphic comment_5 place top 0 0 textcolor 4 linecolor 3
+preplace cgraphic comment_4 place right 270 -6 textcolor 4 linecolor 3
+levelinfo -pg 1 0 410 1140 1300
+pagesize -pg 1 -db -bbox -sgen -110 0 1380 1900
+",
+   "linecolor_comment_3":"",
+   "linecolor_comment_4":"",
+   "linecolor_comment_5":"",
+   "linktoobj_comment_3":"/sgmii/sfp1/config_const",
+   "linktoobj_comment_4":"/sgmii/sfp2/config_const",
+   "linktoobj_comment_5":"/sgmii/sfp0/config_const",
+   "linktotype_comment_3":"bd_cell",
+   "linktotype_comment_4":"bd_cell",
+   "linktotype_comment_5":"bd_cell",
+   "textcolor_comment_3":"",
+   "textcolor_comment_4":"",
+   "textcolor_comment_5":""
 }
 {
-   "da_board_cnt":"2"
+   "da_clkrst_cnt":"5"
+}
+{
+   "/sgmii/sfp0/config_const/comment_2":"comment_5",
+   "/sgmii/sfp1/config_const/comment_3":"comment_3",
+   "/sgmii/sfp2/config_const/comment_4":"comment_4"
 }
