@@ -19,3 +19,6 @@
 1. 只进行发射而不进行接收，原来是收发都测
 2. valid参数为0时（最后一个参数），是不会更改发送buffer内容的，这是在valid=0时添加修改buffer内容，按照伪随机码写入buffer。
 3. 伪随机数要注意读写的大小端！
+
+> 参考内容：  
+> [Linux DMA From User Space 2.0 User app 软件解析](https://github.com/ArtisticZhao/Lilac_UxB/wiki/Linux-DMA-From-User-Space-2.0-User-app-%E8%BD%AF%E4%BB%B6%E8%A7%A3%E6%9E%90) 希望能帮助到你。
