@@ -1,9 +1,15 @@
 /include/ "system-conf.dtsi"
 / {
-   chosen {
-      bootargs = "earlycon console=ttyPS0,115200 clk_ignore_unused cpuidle.off=1 root=/dev/mmcblk0p1 rootfstype=ext4 rw rootwait ";
-      stdout-path = "serial0:115200n8";
-   };
+    chosen {
+        bootargs = "earlycon console=ttyPS0,115200 clk_ignore_unused cpuidle.off=1 root=/dev/mmcblk0p1 rootfstype=ext4 rw rootwait ";
+        stdout-path = "serial0:115200n8";
+    };
+    dma_proxy {  
+        compatible ="xlnx,dma_proxy";
+        dmas = <&RF_interface_conv_Xband_axi_dma_Xband_txrx 0  &RF_interface_conv_Xband_axi_dma_Xband_txrx 1>;
+        dma-names = "dma_proxy_tx", "dma_proxy_rx";  
+        dma-coherent;
+    };
 };
 
 &gem0 {

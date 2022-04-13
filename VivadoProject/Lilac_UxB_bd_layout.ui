@@ -1,50 +1,87 @@
 {
    "ExpandedHierarchyInLayout":"",
+   "comment_0":"QPSK TX on X-band
+bitrate = 10Mbps",
    "comment_3":"phyaddr=8
 reset=emio-gpio1",
    "comment_4":"phyaddr=7
 reset=emio-gpio2",
    "comment_5":"phyaddr=9
 reset=emio-gpio0",
-   "commentid":"comment_3|comment_4|comment_5|",
+   "commentid":"comment_3|comment_4|comment_5|comment_0|",
    "fillcolor_comment_3":"",
    "fillcolor_comment_4":"",
    "fillcolor_comment_5":"",
+   "font_comment_0":"17",
    "font_comment_3":"14",
    "font_comment_4":"14",
    "font_comment_5":"14",
    "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port gt_refclk -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
-preplace port sfp0 -pg 1 -lvl 3 -x 1300 -y 220 -defaultsOSRD
-preplace port sfp1 -pg 1 -lvl 3 -x 1300 -y 180 -defaultsOSRD
-preplace port sfp2 -pg 1 -lvl 3 -x 1300 -y 200 -defaultsOSRD
-preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 410 -y 220 -defaultsOSRD
-preplace inst sgmii -pg 1 -lvl 2 -x 1140 -y 200 -defaultsOSRD
-preplace netloc zynq_ultra_ps_e_0_emio_gpio_o 1 1 1 800 200n
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 1 1 830 280n
-preplace netloc zynq_ultra_ps_e_0_MDIO_ENET0 1 1 1 810 80n
-preplace netloc zynq_ultra_ps_e_0_GMII_ENET0 1 1 1 820 60n
-preplace netloc gig_ethernet_pcs_pma_0_sgmii 1 2 1 NJ 220
-preplace netloc diff_clock_rtl_0_1 1 0 2 NJ 440 810J
-preplace netloc zynq_ultra_ps_e_0_GMII_ENET1 1 1 1 830 100n
-preplace netloc zynq_ultra_ps_e_0_MDIO_ENET1 1 1 1 N 120
-preplace netloc sfp1_sfp 1 2 1 NJ 180
-preplace netloc mdio_pcs_pma_1 1 1 1 N 160
-preplace netloc gmii_gem_pcs_pma_1 1 1 1 800 140n
-preplace netloc sfp2_sfp 1 2 1 NJ 200
+preplace port gt_refclk -pg 1 -lvl 0 -x -20 -y 630 -defaultsOSRD
+preplace port sfp0 -pg 1 -lvl 7 -x 2920 -y 250 -defaultsOSRD
+preplace port sfp1 -pg 1 -lvl 7 -x 2920 -y 210 -defaultsOSRD
+preplace port sfp2 -pg 1 -lvl 7 -x 2920 -y 230 -defaultsOSRD
+preplace port sysref_in -pg 1 -lvl 0 -x -20 -y 700 -defaultsOSRD
+preplace port dac0_clk -pg 1 -lvl 0 -x -20 -y 680 -defaultsOSRD
+preplace port vout00 -pg 1 -lvl 7 -x 2920 -y 680 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 5 -x 2110 -y 240 -defaultsOSRD
+preplace inst sgmii -pg 1 -lvl 6 -x 2760 -y 230 -defaultsOSRD
+preplace inst rst_ps8_0_49M -pg 1 -lvl 1 -x 210 -y 530 -defaultsOSRD
+preplace inst ps8_0_axi_periph -pg 1 -lvl 2 -x 570 -y 250 -defaultsOSRD
+preplace inst QPSK_TX_on_Xband_dac0 -pg 1 -lvl 5 -x 2110 -y 590 -defaultsOSRD
+preplace inst radio_rfdc -pg 1 -lvl 6 -x 2760 -y 690 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 4 -x 1510 -y 350 -defaultsOSRD
+preplace inst RF_interface_conv_Xband -pg 1 -lvl 3 -x 971 -y 510 -defaultsOSRD
+preplace inst concat_interrupt -pg 1 -lvl 4 -x 1510 -y 500 -defaultsOSRD
+preplace inst dma_hpc_config -pg 1 -lvl 4 -x 1510 -y 140 -defaultsOSRD
+preplace netloc zynq_ultra_ps_e_0_emio_gpio_o 1 5 1 2520 230n
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 20 390 390 390 740 370 1140 230 1680 -30 2540
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 6 10 110 NJ 110 NJ 110 1120J 200 1700 -20 2510
+preplace netloc rst_ps8_0_49M_peripheral_aresetn 1 1 5 400 400 730 400 1170 580 1650J -40 2550J
+preplace netloc clk_wiz_0_clk_out1 1 2 5 730 610 NJ 610 1670 790 NJ 790 2900
+preplace netloc concat_interrupt_dout 1 4 1 1670 370n
+preplace netloc RF_interface_conv_Xband_mm2s_introut 1 3 1 1160 490n
+preplace netloc RF_interface_conv_Xband_s2mm_introut 1 3 1 1180 510n
+preplace netloc axcache_coherenet_dout 1 4 1 1690 130n
+preplace netloc axprot_unsecure_dout 1 4 1 1670 150n
+preplace netloc zynq_ultra_ps_e_0_MDIO_ENET1 1 5 1 N 150
+preplace netloc zynq_ultra_ps_e_0_GMII_ENET1 1 5 1 2590 130n
+preplace netloc sfp1_sfp 1 6 1 NJ 210
+preplace netloc zynq_ultra_ps_e_0_MDIO_ENET0 1 5 1 2570 110n
+preplace netloc zynq_ultra_ps_e_0_GMII_ENET0 1 5 1 2580 90n
+preplace netloc gig_ethernet_pcs_pma_0_sgmii 1 6 1 NJ 250
+preplace netloc diff_clock_rtl_0_1 1 0 6 0J -10 NJ -10 NJ -10 NJ -10 NJ -10 2600J
+preplace netloc sfp2_sfp 1 6 1 NJ 230
+preplace netloc gmii_gem_pcs_pma_1 1 5 1 2560 170n
+preplace netloc mdio_pcs_pma_1 1 5 1 N 190
+preplace netloc sysref_in_1 1 0 6 NJ 700 400J 720 NJ 720 NJ 720 NJ 720 2510J
+preplace netloc dac0_clk_1 1 0 6 NJ 680 NJ 680 730J 710 NJ 710 NJ 710 2500J
+preplace netloc usp_rf_data_converter_0_vout00 1 6 1 NJ 680
+preplace netloc tx_pulse_shaping_and_interpolation_5_M_AXIS_DATA 1 5 1 2500 590n
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 1 5 390 10 NJ 10 NJ 10 NJ 10 2500
+preplace netloc ps8_0_axi_periph_M00_AXI 1 2 4 720 0 NJ 0 NJ 0 2530J
+preplace netloc axi_dma_Xband_txrx_M_AXI_SG 1 3 1 1120 310n
+preplace netloc axi_smc_M00_AXI 1 4 1 1660 110n
+preplace netloc ps8_0_axi_periph_M01_AXI 1 2 1 720 260n
+preplace netloc axi_dma_Xband_txrx_M_AXI_MM2S 1 3 1 1130 330n
+preplace netloc axi_dma_Xband_txrx_M_AXI_S2MM 1 3 1 1150 350n
+preplace netloc axis_data_fifo_Xband_tx_dac0_M_AXIS 1 3 2 1140 570 1680J
 preplace cgraphic comment_3 place right 357 23 textcolor 4 linecolor 3
+preplace cgraphic comment_0 place right 133 125 textcolor 4 linecolor 3 linewidth 2
 preplace cgraphic comment_5 place top 0 0 textcolor 4 linecolor 3
 preplace cgraphic comment_4 place right 270 -6 textcolor 4 linecolor 3
-levelinfo -pg 1 0 410 1140 1300
-pagesize -pg 1 -db -bbox -sgen -110 0 1380 1900
+levelinfo -pg 1 -20 210 570 971 1510 2110 2760 2920
+pagesize -pg 1 -db -bbox -sgen -140 -50 3020 2500
 ",
    "linecolor_comment_3":"",
    "linecolor_comment_4":"",
    "linecolor_comment_5":"",
+   "linktoobj_comment_0":"/QPSK_TX_on_Xband_dac0/axis_dwidth_converter_0",
    "linktoobj_comment_3":"/sgmii/sfp1/config_const",
    "linktoobj_comment_4":"/sgmii/sfp2/config_const",
    "linktoobj_comment_5":"/sgmii/sfp0/config_const",
+   "linktotype_comment_0":"bd_cell",
    "linktotype_comment_3":"bd_cell",
    "linktotype_comment_4":"bd_cell",
    "linktotype_comment_5":"bd_cell",
@@ -53,9 +90,12 @@ pagesize -pg 1 -db -bbox -sgen -110 0 1380 1900
    "textcolor_comment_5":""
 }
 {
-   "da_clkrst_cnt":"5"
+   ""da_clkrst_cnt"":"5",
+   "da_axi4_cnt":"8",
+   "da_rf_converter_usp_cnt":"1"
 }
 {
+   "/QPSK_TX_on_Xband_dac0/axis_dwidth_converter_0/comment_5":"comment_0",
    "/sgmii/sfp0/config_const/comment_2":"comment_5",
    "/sgmii/sfp1/config_const/comment_3":"comment_3",
    "/sgmii/sfp2/config_const/comment_4":"comment_4"

@@ -911,6 +911,10 @@
 #define CRF_APB_VPLL_TO_LPD_CTRL_DIVISOR0_MASK                 0x00003F00U
 #undef CRL_APB_GEM0_REF_CTRL_OFFSET 
 #define CRL_APB_GEM0_REF_CTRL_OFFSET                                               0XFF5E0050
+#undef CRL_APB_GEM1_REF_CTRL_OFFSET 
+#define CRL_APB_GEM1_REF_CTRL_OFFSET                                               0XFF5E0054
+#undef CRL_APB_GEM2_REF_CTRL_OFFSET 
+#define CRL_APB_GEM2_REF_CTRL_OFFSET                                               0XFF5E0058
 #undef IOU_SLCR_GEM_CLK_CTRL_OFFSET 
 #define IOU_SLCR_GEM_CLK_CTRL_OFFSET                                               0XFF180308
 #undef CRL_APB_GEM_TSU_REF_CTRL_OFFSET 
@@ -1027,6 +1031,110 @@
 #define CRL_APB_GEM0_REF_CTRL_SRCSEL_MASK                      0x00000007U
 
 /*
+* Clock active for the RX channel
+*/
+#undef CRL_APB_GEM1_REF_CTRL_RX_CLKACT_DEFVAL 
+#undef CRL_APB_GEM1_REF_CTRL_RX_CLKACT_SHIFT 
+#undef CRL_APB_GEM1_REF_CTRL_RX_CLKACT_MASK 
+#define CRL_APB_GEM1_REF_CTRL_RX_CLKACT_DEFVAL                 0x00002500
+#define CRL_APB_GEM1_REF_CTRL_RX_CLKACT_SHIFT                  26
+#define CRL_APB_GEM1_REF_CTRL_RX_CLKACT_MASK                   0x04000000U
+
+/*
+* Clock active signal. Switch to 0 to disable the clock
+*/
+#undef CRL_APB_GEM1_REF_CTRL_CLKACT_DEFVAL 
+#undef CRL_APB_GEM1_REF_CTRL_CLKACT_SHIFT 
+#undef CRL_APB_GEM1_REF_CTRL_CLKACT_MASK 
+#define CRL_APB_GEM1_REF_CTRL_CLKACT_DEFVAL                    0x00002500
+#define CRL_APB_GEM1_REF_CTRL_CLKACT_SHIFT                     25
+#define CRL_APB_GEM1_REF_CTRL_CLKACT_MASK                      0x02000000U
+
+/*
+* 6 bit divider
+*/
+#undef CRL_APB_GEM1_REF_CTRL_DIVISOR1_DEFVAL 
+#undef CRL_APB_GEM1_REF_CTRL_DIVISOR1_SHIFT 
+#undef CRL_APB_GEM1_REF_CTRL_DIVISOR1_MASK 
+#define CRL_APB_GEM1_REF_CTRL_DIVISOR1_DEFVAL                  0x00002500
+#define CRL_APB_GEM1_REF_CTRL_DIVISOR1_SHIFT                   16
+#define CRL_APB_GEM1_REF_CTRL_DIVISOR1_MASK                    0x003F0000U
+
+/*
+* 6 bit divider
+*/
+#undef CRL_APB_GEM1_REF_CTRL_DIVISOR0_DEFVAL 
+#undef CRL_APB_GEM1_REF_CTRL_DIVISOR0_SHIFT 
+#undef CRL_APB_GEM1_REF_CTRL_DIVISOR0_MASK 
+#define CRL_APB_GEM1_REF_CTRL_DIVISOR0_DEFVAL                  0x00002500
+#define CRL_APB_GEM1_REF_CTRL_DIVISOR0_SHIFT                   8
+#define CRL_APB_GEM1_REF_CTRL_DIVISOR0_MASK                    0x00003F00U
+
+/*
+* 000 = IOPLL; 010 = RPLL; 011 = DPLL; (This signal may only be toggled af
+    * ter 4 cycles of the old clock and 4 cycles of the new clock. This is not
+    *  usually an issue, but designers must be aware.)
+*/
+#undef CRL_APB_GEM1_REF_CTRL_SRCSEL_DEFVAL 
+#undef CRL_APB_GEM1_REF_CTRL_SRCSEL_SHIFT 
+#undef CRL_APB_GEM1_REF_CTRL_SRCSEL_MASK 
+#define CRL_APB_GEM1_REF_CTRL_SRCSEL_DEFVAL                    0x00002500
+#define CRL_APB_GEM1_REF_CTRL_SRCSEL_SHIFT                     0
+#define CRL_APB_GEM1_REF_CTRL_SRCSEL_MASK                      0x00000007U
+
+/*
+* Clock active for the RX channel
+*/
+#undef CRL_APB_GEM2_REF_CTRL_RX_CLKACT_DEFVAL 
+#undef CRL_APB_GEM2_REF_CTRL_RX_CLKACT_SHIFT 
+#undef CRL_APB_GEM2_REF_CTRL_RX_CLKACT_MASK 
+#define CRL_APB_GEM2_REF_CTRL_RX_CLKACT_DEFVAL                 0x00002500
+#define CRL_APB_GEM2_REF_CTRL_RX_CLKACT_SHIFT                  26
+#define CRL_APB_GEM2_REF_CTRL_RX_CLKACT_MASK                   0x04000000U
+
+/*
+* Clock active signal. Switch to 0 to disable the clock
+*/
+#undef CRL_APB_GEM2_REF_CTRL_CLKACT_DEFVAL 
+#undef CRL_APB_GEM2_REF_CTRL_CLKACT_SHIFT 
+#undef CRL_APB_GEM2_REF_CTRL_CLKACT_MASK 
+#define CRL_APB_GEM2_REF_CTRL_CLKACT_DEFVAL                    0x00002500
+#define CRL_APB_GEM2_REF_CTRL_CLKACT_SHIFT                     25
+#define CRL_APB_GEM2_REF_CTRL_CLKACT_MASK                      0x02000000U
+
+/*
+* 6 bit divider
+*/
+#undef CRL_APB_GEM2_REF_CTRL_DIVISOR1_DEFVAL 
+#undef CRL_APB_GEM2_REF_CTRL_DIVISOR1_SHIFT 
+#undef CRL_APB_GEM2_REF_CTRL_DIVISOR1_MASK 
+#define CRL_APB_GEM2_REF_CTRL_DIVISOR1_DEFVAL                  0x00002500
+#define CRL_APB_GEM2_REF_CTRL_DIVISOR1_SHIFT                   16
+#define CRL_APB_GEM2_REF_CTRL_DIVISOR1_MASK                    0x003F0000U
+
+/*
+* 6 bit divider
+*/
+#undef CRL_APB_GEM2_REF_CTRL_DIVISOR0_DEFVAL 
+#undef CRL_APB_GEM2_REF_CTRL_DIVISOR0_SHIFT 
+#undef CRL_APB_GEM2_REF_CTRL_DIVISOR0_MASK 
+#define CRL_APB_GEM2_REF_CTRL_DIVISOR0_DEFVAL                  0x00002500
+#define CRL_APB_GEM2_REF_CTRL_DIVISOR0_SHIFT                   8
+#define CRL_APB_GEM2_REF_CTRL_DIVISOR0_MASK                    0x00003F00U
+
+/*
+* 000 = IOPLL; 010 = RPLL; 011 = DPLL; (This signal may only be toggled af
+    * ter 4 cycles of the old clock and 4 cycles of the new clock. This is not
+    *  usually an issue, but designers must be aware.)
+*/
+#undef CRL_APB_GEM2_REF_CTRL_SRCSEL_DEFVAL 
+#undef CRL_APB_GEM2_REF_CTRL_SRCSEL_SHIFT 
+#undef CRL_APB_GEM2_REF_CTRL_SRCSEL_MASK 
+#define CRL_APB_GEM2_REF_CTRL_SRCSEL_DEFVAL                    0x00002500
+#define CRL_APB_GEM2_REF_CTRL_SRCSEL_SHIFT                     0
+#define CRL_APB_GEM2_REF_CTRL_SRCSEL_MASK                      0x00000007U
+
+/*
 * PLL or PHY source selection for gem0_ref_clk generation 0: PLL Reference
     *  clock 1: FMIO PLL clock or GTX Clock
 */
@@ -1047,6 +1155,50 @@
 #define IOU_SLCR_GEM_CLK_CTRL_GEM0_RX_SRC_SEL_DEFVAL           0x00000000
 #define IOU_SLCR_GEM_CLK_CTRL_GEM0_RX_SRC_SEL_SHIFT            0
 #define IOU_SLCR_GEM_CLK_CTRL_GEM0_RX_SRC_SEL_MASK             0x00000001U
+
+/*
+* PLL or PHY source selection for gem1_ref_clk generation 0: PLL Reference
+    *  clock 1: FMIO PLL clock or GTX Clock
+*/
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL_DEFVAL 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL_SHIFT 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL_MASK 
+#define IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL_DEFVAL          0x00000000
+#define IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL_SHIFT           6
+#define IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL_MASK            0x00000040U
+
+/*
+* MIO or FMIO source selection for gem1_rx_clk generation 0: MIO clock 1:
+    * FMIO clock
+*/
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL_DEFVAL 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL_SHIFT 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL_MASK 
+#define IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL_DEFVAL           0x00000000
+#define IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL_SHIFT            5
+#define IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL_MASK             0x00000020U
+
+/*
+* PLL or PHY source selection for gem2_ref_clk generation 0: PLL Reference
+    *  clock 1: FMIO PLL clock or GTX Clock
+*/
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL_DEFVAL 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL_SHIFT 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL_MASK 
+#define IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL_DEFVAL          0x00000000
+#define IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL_SHIFT           11
+#define IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL_MASK            0x00000800U
+
+/*
+* MIO or FMIO source selection for gem2_rx_clk generation 0: MIO clock 1:
+    * FMIO clock
+*/
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL_DEFVAL 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL_SHIFT 
+#undef IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL_MASK 
+#define IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL_DEFVAL           0x00000000
+#define IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL_SHIFT            10
+#define IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL_MASK             0x00000400U
 
 /*
 * 6 bit divider
@@ -29450,6 +29602,26 @@
 #define CRL_APB_RST_LPD_IOU0_GEM0_RESET_MASK                   0x00000001U
 
 /*
+* GEM 1 reset
+*/
+#undef CRL_APB_RST_LPD_IOU0_GEM1_RESET_DEFVAL 
+#undef CRL_APB_RST_LPD_IOU0_GEM1_RESET_SHIFT 
+#undef CRL_APB_RST_LPD_IOU0_GEM1_RESET_MASK 
+#define CRL_APB_RST_LPD_IOU0_GEM1_RESET_DEFVAL                 0x0000000F
+#define CRL_APB_RST_LPD_IOU0_GEM1_RESET_SHIFT                  1
+#define CRL_APB_RST_LPD_IOU0_GEM1_RESET_MASK                   0x00000002U
+
+/*
+* GEM 2 reset
+*/
+#undef CRL_APB_RST_LPD_IOU0_GEM2_RESET_DEFVAL 
+#undef CRL_APB_RST_LPD_IOU0_GEM2_RESET_SHIFT 
+#undef CRL_APB_RST_LPD_IOU0_GEM2_RESET_MASK 
+#define CRL_APB_RST_LPD_IOU0_GEM2_RESET_DEFVAL                 0x0000000F
+#define CRL_APB_RST_LPD_IOU0_GEM2_RESET_SHIFT                  2
+#define CRL_APB_RST_LPD_IOU0_GEM2_RESET_MASK                   0x00000004U
+
+/*
 * Block level reset
 */
 #undef CRL_APB_RST_LPD_IOU2_QSPI_RESET_DEFVAL 
@@ -30605,6 +30777,12 @@
 #define CRF_APB_RST_FPD_TOP_OFFSET                                                 0XFD1A0100
 #undef CRL_APB_RST_LPD_TOP_OFFSET 
 #define CRL_APB_RST_LPD_TOP_OFFSET                                                 0XFF5E023C
+#undef FPD_SLCR_AFI_FS_OFFSET 
+#define FPD_SLCR_AFI_FS_OFFSET                                                     0XFD615000
+#undef AFIFM0_AFIFM_RDCTRL_OFFSET 
+#define AFIFM0_AFIFM_RDCTRL_OFFSET                                                 0XFD360000
+#undef AFIFM0_AFIFM_WRCTRL_OFFSET 
+#define AFIFM0_AFIFM_WRCTRL_OFFSET                                                 0XFD360014
 
 /*
 * AF_FM0 block level reset
@@ -30675,6 +30853,40 @@
 #define CRL_APB_RST_LPD_TOP_AFI_FM6_RESET_DEFVAL               0x00188FDF
 #define CRL_APB_RST_LPD_TOP_AFI_FM6_RESET_SHIFT                19
 #define CRL_APB_RST_LPD_TOP_AFI_FM6_RESET_MASK                 0x00080000U
+
+/*
+* Select the 32/64/128-bit data width selection for the Slave 0 00: 32-bit
+    *  AXI data width (default) 01: 64-bit AXI data width 10: 128-bit AXI data
+    *  width 11: reserved
+*/
+#undef FPD_SLCR_AFI_FS_DW_SS0_SEL_DEFVAL 
+#undef FPD_SLCR_AFI_FS_DW_SS0_SEL_SHIFT 
+#undef FPD_SLCR_AFI_FS_DW_SS0_SEL_MASK 
+#define FPD_SLCR_AFI_FS_DW_SS0_SEL_DEFVAL                      0x00000A00
+#define FPD_SLCR_AFI_FS_DW_SS0_SEL_SHIFT                       8
+#define FPD_SLCR_AFI_FS_DW_SS0_SEL_MASK                        0x00000300U
+
+/*
+* Configures the Read Channel Fabric interface width. 2'b11 : Reserved 2'b
+    * 10 : 32-bit Fabric 2'b01 : 64-bit enabled 2'b00 : 128-bit enabled
+*/
+#undef AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH_DEFVAL 
+#undef AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH_SHIFT 
+#undef AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH_MASK 
+#define AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH_DEFVAL                0x000003B0
+#define AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH_SHIFT                 0
+#define AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH_MASK                  0x00000003U
+
+/*
+* Configures the Write Channel Fabric interface width. 2'b11 : Reserved 2'
+    * b10 : 32-bit Fabric 2'b01 : 64-bit enabled 2'b00 : 128-bit enabled
+*/
+#undef AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH_DEFVAL 
+#undef AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH_SHIFT 
+#undef AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH_MASK 
+#define AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH_DEFVAL                0x000003B0
+#define AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH_SHIFT                 0
+#define AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH_MASK                  0x00000003U
 #undef GPIO_MASK_DATA_5_MSW_OFFSET 
 #define GPIO_MASK_DATA_5_MSW_OFFSET                                                0XFF0A002C
 #undef GPIO_DIRM_5_OFFSET 

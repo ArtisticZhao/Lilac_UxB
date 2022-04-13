@@ -1,4 +1,6 @@
 ############################ CONFIG SGMII ############################
+
+############################ CONFIG SGMII ############################
 # gt-ref clk  zu513
 set_property PACKAGE_PIN P32 [get_ports gt_refclk_clk_n]
 set_property PACKAGE_PIN P31 [get_ports gt_refclk_clk_p]

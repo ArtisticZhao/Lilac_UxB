@@ -5,6 +5,7 @@
 - VivadoProject: vivado project which defined the hardware (ps and pl).
 - SDK: bare program of zynq, FSBL
 - Petalinux: petalinux source code. The petalinux project already config-hw-description!
+- LinuxApplication: Linux application on target board.
 
 ## Usage
 

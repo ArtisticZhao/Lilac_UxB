@@ -889,6 +889,60 @@ unsigned long psu_clock_init_data(void)
 /*##################################################################### */
 
     /*
+    * Register : GEM1_REF_CTRL @ 0XFF5E0054
+
+    * Clock active for the RX channel
+    *  PSU_CRL_APB_GEM1_REF_CTRL_RX_CLKACT                         0x1
+
+    * Clock active signal. Switch to 0 to disable the clock
+    *  PSU_CRL_APB_GEM1_REF_CTRL_CLKACT                            0x1
+
+    * 6 bit divider
+    *  PSU_CRL_APB_GEM1_REF_CTRL_DIVISOR1                          0x1
+
+    * 6 bit divider
+    *  PSU_CRL_APB_GEM1_REF_CTRL_DIVISOR0                          0xc
+
+    * 000 = IOPLL; 010 = RPLL; 011 = DPLL; (This signal may only be toggled af
+    * ter 4 cycles of the old clock and 4 cycles of the new clock. This is not
+    *  usually an issue, but designers must be aware.)
+    *  PSU_CRL_APB_GEM1_REF_CTRL_SRCSEL                            0x0
+
+    * This register controls this reference clock
+    * (OFFSET, MASK, VALUE)      (0XFF5E0054, 0x063F3F07U ,0x06010C00U)
+    */
+	PSU_Mask_Write(CRL_APB_GEM1_REF_CTRL_OFFSET,
+		0x063F3F07U, 0x06010C00U);
+/*##################################################################### */
+
+    /*
+    * Register : GEM2_REF_CTRL @ 0XFF5E0058
+
+    * Clock active for the RX channel
+    *  PSU_CRL_APB_GEM2_REF_CTRL_RX_CLKACT                         0x1
+
+    * Clock active signal. Switch to 0 to disable the clock
+    *  PSU_CRL_APB_GEM2_REF_CTRL_CLKACT                            0x1
+
+    * 6 bit divider
+    *  PSU_CRL_APB_GEM2_REF_CTRL_DIVISOR1                          0x1
+
+    * 6 bit divider
+    *  PSU_CRL_APB_GEM2_REF_CTRL_DIVISOR0                          0xc
+
+    * 000 = IOPLL; 010 = RPLL; 011 = DPLL; (This signal may only be toggled af
+    * ter 4 cycles of the old clock and 4 cycles of the new clock. This is not
+    *  usually an issue, but designers must be aware.)
+    *  PSU_CRL_APB_GEM2_REF_CTRL_SRCSEL                            0x0
+
+    * This register controls this reference clock
+    * (OFFSET, MASK, VALUE)      (0XFF5E0058, 0x063F3F07U ,0x06010C00U)
+    */
+	PSU_Mask_Write(CRL_APB_GEM2_REF_CTRL_OFFSET,
+		0x063F3F07U, 0x06010C00U);
+/*##################################################################### */
+
+    /*
     * Register : GEM_CLK_CTRL @ 0XFF180308
 
     * PLL or PHY source selection for gem0_ref_clk generation 0: PLL Reference
@@ -899,11 +953,27 @@ unsigned long psu_clock_init_data(void)
     * FMIO clock
     *  PSU_IOU_SLCR_GEM_CLK_CTRL_GEM0_RX_SRC_SEL                   0x1
 
+    * PLL or PHY source selection for gem1_ref_clk generation 0: PLL Reference
+    *  clock 1: FMIO PLL clock or GTX Clock
+    *  PSU_IOU_SLCR_GEM_CLK_CTRL_GEM1_REF_SRC_SEL                  0x1
+
+    * MIO or FMIO source selection for gem1_rx_clk generation 0: MIO clock 1:
+    * FMIO clock
+    *  PSU_IOU_SLCR_GEM_CLK_CTRL_GEM1_RX_SRC_SEL                   0x1
+
+    * PLL or PHY source selection for gem2_ref_clk generation 0: PLL Reference
+    *  clock 1: FMIO PLL clock or GTX Clock
+    *  PSU_IOU_SLCR_GEM_CLK_CTRL_GEM2_REF_SRC_SEL                  0x1
+
+    * MIO or FMIO source selection for gem2_rx_clk generation 0: MIO clock 1:
+    * FMIO clock
+    *  PSU_IOU_SLCR_GEM_CLK_CTRL_GEM2_RX_SRC_SEL                   0x1
+
     * SoC Debug Clock Control
-    * (OFFSET, MASK, VALUE)      (0XFF180308, 0x00000003U ,0x00000003U)
+    * (OFFSET, MASK, VALUE)      (0XFF180308, 0x00000C63U ,0x00000C63U)
     */
 	PSU_Mask_Write(IOU_SLCR_GEM_CLK_CTRL_OFFSET,
-		0x00000003U, 0x00000003U);
+		0x00000C63U, 0x00000C63U);
 /*##################################################################### */
 
     /*
@@ -13800,11 +13870,17 @@ unsigned long psu_peripherals_init_data(void)
     * GEM 0 reset
     *  PSU_CRL_APB_RST_LPD_IOU0_GEM0_RESET                         0
 
+    * GEM 1 reset
+    *  PSU_CRL_APB_RST_LPD_IOU0_GEM1_RESET                         0
+
+    * GEM 2 reset
+    *  PSU_CRL_APB_RST_LPD_IOU0_GEM2_RESET                         0
+
     * Software controlled reset for the GEMs
-    * (OFFSET, MASK, VALUE)      (0XFF5E0230, 0x00000001U ,0x00000000U)
+    * (OFFSET, MASK, VALUE)      (0XFF5E0230, 0x00000007U ,0x00000000U)
     */
 	PSU_Mask_Write(CRL_APB_RST_LPD_IOU0_OFFSET,
-		0x00000001U, 0x00000000U);
+		0x00000007U, 0x00000000U);
 /*##################################################################### */
 
     /*
@@ -16235,6 +16311,47 @@ unsigned long psu_afi_config(void)
     /*
     * AFIFM INTERFACE WIDTH
     */
+    /*
+    * Register : afi_fs @ 0XFD615000
+
+    * Select the 32/64/128-bit data width selection for the Slave 0 00: 32-bit
+    *  AXI data width (default) 01: 64-bit AXI data width 10: 128-bit AXI data
+    *  width 11: reserved
+    *  PSU_FPD_SLCR_AFI_FS_DW_SS0_SEL                              0x2
+
+    * afi fs SLCR control register. This register is static and should not be
+    * modified during operation.
+    * (OFFSET, MASK, VALUE)      (0XFD615000, 0x00000300U ,0x00000200U)
+    */
+	PSU_Mask_Write(FPD_SLCR_AFI_FS_OFFSET, 0x00000300U, 0x00000200U);
+/*##################################################################### */
+
+    /*
+    * Register : AFIFM_RDCTRL @ 0XFD360000
+
+    * Configures the Read Channel Fabric interface width. 2'b11 : Reserved 2'b
+    * 10 : 32-bit Fabric 2'b01 : 64-bit enabled 2'b00 : 128-bit enabled
+    *  PSU_AFIFM0_AFIFM_RDCTRL_FABRIC_WIDTH                        0x0
+
+    * Read Channel Control Register
+    * (OFFSET, MASK, VALUE)      (0XFD360000, 0x00000003U ,0x00000000U)
+    */
+	PSU_Mask_Write(AFIFM0_AFIFM_RDCTRL_OFFSET, 0x00000003U, 0x00000000U);
+/*##################################################################### */
+
+    /*
+    * Register : AFIFM_WRCTRL @ 0XFD360014
+
+    * Configures the Write Channel Fabric interface width. 2'b11 : Reserved 2'
+    * b10 : 32-bit Fabric 2'b01 : 64-bit enabled 2'b00 : 128-bit enabled
+    *  PSU_AFIFM0_AFIFM_WRCTRL_FABRIC_WIDTH                        0x0
+
+    * Write Channel Control Register
+    * (OFFSET, MASK, VALUE)      (0XFD360014, 0x00000003U ,0x00000000U)
+    */
+	PSU_Mask_Write(AFIFM0_AFIFM_WRCTRL_OFFSET, 0x00000003U, 0x00000000U);
+/*##################################################################### */
+
 
 	return 1;
 }

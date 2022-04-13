@@ -17,6 +17,8 @@ set device xczu28dr-ffvg1517-2-i
 set proj_dir ./work/${project_name}_hw
 
 create_project -name ${project_name} -force -dir ${proj_dir} -part ${device}
+# Add verilog file to project.
+add_files {RTL/QPSK_TX/Repeater.v RTL/QPSK_TX/QPSK_data_converter.v}
 
 # UI layout file can save the bd's layout.
 set ui_name Lilac_UxB_bd_layout.ui
