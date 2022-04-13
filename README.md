@@ -28,3 +28,4 @@
 - 0.0.3 Enable eMMC, and wrote the rootfs on it, uboot will tell the kernel mount rootfs on eMMC.
 - 0.0.4 Modify U-BOOT source code, add support to 513's fake QSPI flash, kernel can load from QSPI flash.
 - 0.0.5 Enable 3 SGMIIs interface.
+- 0.0.6 Add axi dma subsystem to interact QPSK tx module on PL which work at bitrate=10Mbps.
