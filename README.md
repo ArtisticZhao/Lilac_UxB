@@ -6,6 +6,7 @@
 - SDK: bare program of zynq, FSBL
 - Petalinux: petalinux source code. The petalinux project already config-hw-description!
 - LinuxApplication: Linux application on target board.
+- Scripts: Some useful scripts for ILA data visualization.
 
 ## Usage
 
