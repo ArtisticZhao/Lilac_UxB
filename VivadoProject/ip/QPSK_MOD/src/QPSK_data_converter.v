@@ -107,7 +107,7 @@ always @(*) begin
       nstate = SEND;
     end
     SEND: begin
-      if (sender_cnt == 14 && out_tvalid && out_tready) begin  // 发送15位后 第16位进入到SEND_LAST状态，来判断是否进入IDLE
+      if (sender_cnt == 15 && out_tvalid && out_tready) begin  // 发送15位后 第16位进入到SEND_LAST状态，来判断是否进入IDLE
         nstate = SEND_LAST;
       end
       else begin
@@ -148,15 +148,39 @@ always @(posedge clk or posedge reset) begin
       end
       SEND: begin
         in_tready <= 0;
-        if (sender_cnt == 0) begin
-        end
-        else begin
-        end
         out_tvalid <= 1;
+        case ({in_tdata_reg[cnt_m2p1], in_tdata_reg[cnt_m2]})
+          2'b00: begin
+            out_tdata[31:0] = z00;  // Q  I
+          end
+          2'b01: begin
+            out_tdata[31:0] = z01;  // Q  I
+          end
+          2'b10: begin
+            out_tdata[31:0] = z10;  // Q  I
+          end
+          2'b11: begin
+            out_tdata[31:0] = z11;  // Q  I
+          end
+        endcase
       end
       SEND_LAST: begin
         in_tready <= 1;
         out_tvalid <= 1;
+        case ({in_tdata_reg[cnt_m2p1], in_tdata_reg[cnt_m2]})
+          2'b00: begin
+            out_tdata[31:0] = z00;  // Q  I
+          end
+          2'b01: begin
+            out_tdata[31:0] = z01;  // Q  I
+          end
+          2'b10: begin
+            out_tdata[31:0] = z10;  // Q  I
+          end
+          2'b11: begin
+            out_tdata[31:0] = z11;  // Q  I
+          end
+        endcase
       end
       default: begin
         in_tready <= 1;
@@ -165,43 +189,4 @@ always @(posedge clk or posedge reset) begin
     endcase
   end
 end
-
-// for DEBUG
-// assign out_tdata[31:2] = 0;
-// assign out_tdata[0] = in_tdata_reg[cnt_m2];
-// assign out_tdata[1] = in_tdata_reg[cnt_m2p1];
-
-// 差分编码，与GR相同的方法
-// out[i] = (in[i] + last_out) % d_modulus;
-wire [1:0] in_ab;
-reg  [1:0] out_cd;
-assign in_ab[1:0] = {in_tdata_reg[cnt_m2p1], in_tdata_reg[cnt_m2]};
-always @(posedge clk or posedge reset) begin
-  if (reset) begin
-    out_cd <= 2'b00;
-  end
-  else begin
-    out_cd <= out_cd + in_ab;
-  end
-end
-
-// remap output value to DAC output.
-always @(*) begin
-  case (out_cd)
-    2'b00: begin
-      out_tdata[31:0] = z00;   // Q  I
-    end
-    2'b01: begin
-      out_tdata[31:0] = z01;  // Q  I
-    end
-    2'b10: begin
-      out_tdata[31:0] = z10;  // Q  I
-    end
-    2'b11: begin
-      out_tdata[31:0] = z11;  // Q  I
-    end
-    
-  endcase
-end
-
 endmodule
