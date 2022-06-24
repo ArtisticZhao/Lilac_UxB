@@ -1,5 +1,7 @@
 # Lilac UxB
 
+RF test project ref to [ArtisticZhao/ZCU111_RF_test](https://github.com/ArtisticZhao/ZCU111_RF_test).
+
 ## Folders
 
 - VivadoProject: vivado project which defined the hardware (ps and pl).
